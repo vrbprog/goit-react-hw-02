@@ -1,0 +1,43 @@
+.profile {
+    width: 256px;
+    height: 256px;
+    border: 2px solid rgb(44, 44, 46);
+    border-radius: 8px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    .boxProperties {
+        display: flex;
+        flex-direction: row;
+        height: 25%;
+    }
+
+    .avatar {
+        width: 80px;
+        margin-top: 12px;
+        border-radius: 50%;
+        background-color: #262626;
+    }
+
+    .userInfo {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background-color: #f8f8f8;
+        flex-grow: 1;
+        z-index: -2;
+    }
+
+    .userName {
+        font-size: 20px;
+        font-weight: 700;
+        padding: 4px 0px;
+    }
+
+    .userTag {
+        color: #808080;
+        font-weight: 500;
+    }
+}
