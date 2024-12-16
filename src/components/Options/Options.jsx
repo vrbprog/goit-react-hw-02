@@ -1,23 +1,11 @@
 
-export default function Options() {
-
-    const handleClickGood = () => {
-        console.log("Good was clicked!!!");
-    }
-
-    const handleClickNeutral = () => {
-        console.log("Neutral was clicked!!!");
-    }
-
-    const handleClickBad = () => {
-        console.log("Bad was clicked!!!");
-    }
+export default function Options({feeds}) {
 
     return (
         <div>
-            <button onClick={handleClickGood}>Good</button>
-            <button onClick={handleClickNeutral}>Neutral</button>
-            <button onClick={handleClickBad}>Bad</button>
+            <button onClick={() => feeds("good")}>Good</button>
+            <button onClick={() =>feeds("neutral")}>Neutral</button>
+            <button onClick={() =>feeds("bad")}>Bad</button>
             <button>Reset</button>
         </div>
     )
