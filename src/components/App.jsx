@@ -24,6 +24,11 @@ export default function App() {
     },
     setNeutral(feed) {
       this.neutral = feed;
+    },
+    resetFeed() {
+      this.good = 0;
+      this.bad = 0;
+      this.neutral = 0;
     }
   }
 
@@ -41,6 +46,12 @@ export default function App() {
       case 'neutral':
         setNeutral(prev => prev + 1);
         feedback.setBad(neutral);
+        break;
+      case 'reset':
+        setGood(0);
+        setBad(0);
+        setNeutral(0);
+        feedback.resetFeed(neutral);
         break;
     
       default:
