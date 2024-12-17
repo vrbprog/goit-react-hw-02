@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react';
 
-
 import Description from "./Description/Description";
 import Feedback from "./Feedback/Feedback";
 import Options from "./Options/Options";
+import Notification from "./Notification/Notification";
 
 export default function App() {
 
@@ -16,18 +16,18 @@ export default function App() {
     return ({
       good: 0,
       bad: 0,
-      neutral: 0
+      neutral: 0,
     });
   });
 
+  const totalFeedback = feedback.good + feedback.neutral + feedback.bad;
+  const positiveFeedback = Math.round((feedback.good / totalFeedback) * 100);
 
     useEffect(() => {
       window.localStorage.setItem("saved-feedback", JSON.stringify({ feedback }));
     }, [feedback]);
 
-
   const updateFeedback = feedbackType => {
-    // Тут використовуй сеттер, щоб оновити стан
     switch (feedbackType) {
       case 'good':
         setFeedback({
@@ -47,17 +47,19 @@ export default function App() {
           neutral: feedback.neutral + 1
 		  });
         break;
-      case 'reset':
-        setFeedback({
-          good: 0,
-          bad: 0,
-          neutral: 0
-		  });
-        break;
     
       default:
         break;
     }
+    
+}
+
+const resetFeedback = () => {
+    setFeedback({
+          good: 0,
+          bad: 0,
+          neutral: 0
+		});
 }
 
   return (
@@ -66,11 +68,19 @@ export default function App() {
 
       <Options
         feeds = {updateFeedback}
+        reset = {resetFeedback}
+        total = {totalFeedback}
       />
 
-      <Feedback
+      { totalFeedback > 0 ? 
+      (<Feedback
         feedback = {feedback}
-      />
+        total = {totalFeedback}
+        positive = {positiveFeedback}
+      />) : (
+        <Notification />
+      )}
+
     </main>
   );
 }

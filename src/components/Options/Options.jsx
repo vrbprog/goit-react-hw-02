@@ -1,12 +1,12 @@
 
-export default function Options({feeds}) {
+export default function Options({feeds, reset, total}) {
 
     return (
         <div>
             <button onClick={() => feeds("good")}>Good</button>
             <button onClick={() =>feeds("neutral")}>Neutral</button>
             <button onClick={() =>feeds("bad")}>Bad</button>
-            <button onClick={() =>feeds("reset")}>Reset</button>
+            { total > 0 && <button onClick={() =>reset()}>Reset</button> }
         </div>
     )
 }
