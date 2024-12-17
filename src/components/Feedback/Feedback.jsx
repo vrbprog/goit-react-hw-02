@@ -1,17 +1,17 @@
 
 
-export default function Feedback({good, bad, neutral}) {
-    const totalFeedback = good + bad + neutral;
+export default function Feedback({feedback}) {
+    const totalFeedback = feedback.good + feedback.bad + feedback.neutral;
     return (
         <div>
             {(totalFeedback) === 0 ?
                 (<p>Not yet</p>) :
                 (<div>
-                    <p>Good: {good}</p>
-                    <p>Bad: {bad}</p>
-                    <p>Neutral: {neutral}</p>
+                    <p>Good: {feedback.good}</p>
+                    <p>Bad: {feedback.bad}</p>
+                    <p>Neutral: {feedback.neutral}</p>
                     <p>Total: {totalFeedback}</p>
-                    <p>Positive: { Math.round((good / totalFeedback) * 100)}%</p>
+                    <p>Positive: { Math.round((feedback.good / totalFeedback) * 100)}%</p>
                 </div>)
             }
         </div>
